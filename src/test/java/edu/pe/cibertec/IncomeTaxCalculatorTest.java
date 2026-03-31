@@ -36,10 +36,19 @@ public class IncomeTaxCalculatorTest {
 
     @Test
     @DisplayName("Income within bracket 7 to 12 UIT pay 8% on excess")
-    void givenIncomeInBracketSevenToTwelveUIT_wheCalcule_thenEightPercent()
+    void givenIncomeInBracketSevenToTwelveUIT_wheCalculate_thenEightPercent()
     {
         double income = 10 * UIT;
         double expected = (10 - 7) * UIT * 0.08;
+        assertEquals(expected, calculator.calculate(income), DELTA);
+    }
+
+    @Test
+    @DisplayName("Income within bracket 12 to 27 UIT pay 14% on excess")
+    void givenIncomeInBracketTwelveToTwentySevenUIT_wheCalculate_thenAccumulateTax()
+    {
+        double income = 20 * UIT;
+        double expected = (5 * UIT * 0.08) + (8 * UIT * 0.14);
         assertEquals(expected, calculator.calculate(income), DELTA);
     }
 }
