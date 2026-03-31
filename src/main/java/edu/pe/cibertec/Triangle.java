@@ -12,7 +12,13 @@ public class Triangle {
         if(a == b && b == c){
             return TriangleType.EQUILATERAL;
         }
-        return TriangleType.ESCALENO;
+        if (a == b || b == c || a == c) {
+            return TriangleType.ISOCELES;
+        }
+        if (a != b && b != c) {
+            return TriangleType.ESCALENO;
+        }
+        return TriangleType.INVALID;
     }
 
 }
